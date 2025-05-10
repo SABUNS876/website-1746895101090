@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Al-Qur'an Digital - Baca 1 sampai 5 Juz</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+  /* Root styling for Islam-themed colors */
+  :root {
+    --primary-green: #2a5d34;
+    --secondary-green: #669966;
+    --background-beige: #f9f4ec;
+    --gold: #c89b2f;
+    --dark-text: #2b2b2b;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Amiri', serif;
+    background-color: var(--background-beige);
+    color: var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  h1, h2, h3 {
+    margin: 0.3em 0;
+    font-weight: 700;
+  }
+
+  header {
+    background: var(--primary-green);
+    color: var(--background-beige);
+    text-align: center;
+    padding: 1em 0.5em;
+    box-shadow: 0 2px 10px var(--shadow-color);
+  }
+  header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+  }
+  header p {
+    font-size: 0.95rem;
+    margin-top: 0.3em;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 1em 2em 1em;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .selector {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  select {
+    font-family: 'Amiri', serif;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    border: 2px solid var(--secondary-green);
+    background: var(--background-beige);
+    color: var(--dark-text);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  select:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  #quran-text {
+    background: white;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    direction: rtl;
+    margin-top: 0.5em;
+    overflow-y: auto;
+    max-height: 480px;
+  }
+  #quran-text .ayah {
+    margin-bottom: 1.1em;
+  }
+  #quran-text .ayah span.verse-number {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--secondary-green);
+    font-size: 0.9rem;
+    padding: 0.5em 0 1em 0;
+  }
+
+  /* Responsive for mobile with max height 600px and width 350px */
+  @media (max-width: 400px), (max-height: 600px) {
+    main {
+      padding: 0.7em;
+    }
+    #quran-text {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      max-height: 400px;
+      padding: 1rem;
+    }
+    header h1 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Al-Qur'an Digital</h1>
+  <p>Baca Juz 1 hingga Juz 5 - Pilih dan Baca Ayat Suci</p>
+</header>
+<main>
+  <div class="selector">
+    <label for="juz-select" style="display:none;">Pilih Juz</label>
+    <select id="juz-select" aria-label="Pilih Juz Al-Qur'an">
+      <option value="1">Juz 1 (Al-Fatiha - Al-Baqarah:141)</option>
+      <option value="2">Juz 2 (Al-Baqarah:142 - Al-Baqarah:252)</option>
+      <option value="3">Juz 3 (Al-Baqarah:253 - Ali 'Imran:92)</option>
+      <option value="4">Juz 4 (Ali 'Imran:93 - An-Nisa:23)</option>
+      <option value="5">Juz 5 (An-Nisa:24 - Al-Ma'idah:81)</option>
+    </select>
+  </div>
+  <article id="quran-text" tabindex="0" aria-live="polite">
+    Memuat ayat Al-Qur'an...
+  </article>
+</main>
+<footer>
+  &copy; 2024 Al-Qur'an Digital - Semoga membawa berkah
+</footer>
+<script>
+  // Quran ayah data for Juz 1-5 (simplified example with limited verses)
+  // Note: Full set is large; here is a sample excerpt for demo purposes.
+  // For full 1-5 Juz, we need to load data or simulate partial for demonstration.
+  const juzData = {
+    "1": [
+      {verse: 1, text: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ"},
+      {verse: 2, text: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ"},
+      {verse: 3, text: "الرَّحْمَنِ الرَّحِيمِ"},
+      {verse: 4, text: "مَالِكِ يَوْمِ الدِّينِ"},
+      {verse: 5, text: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ"}
+    ],
+    "2": [
+      {verse: 142, text: "سَيَقُولُ السُّفَهَاءُ مِنَ النَّاسِ مَا وَلَّاهُمْ عَن قِبْلَتِهِمُ الَّتِي كَانُوا عَلَيْهَا ۚ قُل لِلَّهِ الْمَشْرِقُ وَالْمَغْرِبُ ۚ يَهْدِي مَن يَشَاءُ إِلَىٰ صِرَاطٍ مُّسْتَقِيمٍ"},
+      {verse: 143, text: "وَكَذَٰلِكَ جَعَلْنَاكُمْ أُمَّةً وَسَطًا لِّتَكُونُوا شُهَدَاءَ عَلَى النَّاسِ وَيَكُونَ الرَّسُولُ عَلَيْكُمْ شَهِيدًا"},
+      {verse: 144, text: "وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا"},
+      {verse: 145, text: "فَسُبْحَانَ اللَّهِ حِينَ تُمْسُونَ وَحِينَ تُصْبِحُونَ"},
+      {verse: 146, text: "وَلِلَّهِ الْحَمْدُ فِي السَّمَاوَاتِ وَالْأَرْضِ وَعَشِيًّا وَحِينَ تُظْهِرُونَ"}
+    ],
+    "3": [
+      {verse: 253, text: "وَرَسُلًا قَدْ فَصَّلْنَا فِي النَّبَوِيَّاتِ مِنْهُم مَّن قَصَصْنَا عَلَيْكَ وَمِنْهُم مَّن لَّمْ نَقْصُصْ عَلَيْكَ"},
+      {verse: 254, text: "تِلْكَ الرُّسُلُ فَضَّلْنَا بَعْضَهُمْ عَلَىٰ بَعْضٍ"},
+      {verse: 255, text: "مِنْهُم مَّن كَلَّمَ اللَّهُ وَرَفَعَ بَعْضَهُمْ دَرَجَاتٍ"},
+      {verse: 256, text: "وَآتَيْنَا عِيسَى ابْنَ مَرْيَمَ الْبَيِّنَاتِ"},
+      {verse: 257, text: "وَأَيَّدْنَاهُ بِرُوحِ الْقُدُسِ"}
+    ],
+    "4": [
+      {verse: 93, text: "وَمَن يَقْتُلْ مُؤْمِنًا مُّتَعَمِّدًا فَجَزَاؤُهُ جَهَنَّمُ خَالِدًا فِيهَا"},
+      {verse: 94, text: "وَمَن يَقْتُلْ مُؤْمِنًا مُّتَعَمِّدًا فَقَتَلْنَا نَفْسًا بِنَفْسٍ"},
+      {verse: 95, text: "وَمَن صَدَقَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ"},
+      {verse: 96, text: "وَمَن يَقْتُلْ مُؤْمِنًا مُّتَعَمِّدًا بَغْيًا وَّظُلْمًا فَحَرَامٌ عَلَيْهِ الْأَرْضُ"},
+      {verse: 97, text: "إِن تَصْلَحُوا وَتَتَّقُوا فَإِنَّ اللَّهَ كَانَ غَفُورًا رَّحِيمًا"}
+    ],
+    "5": [
+      {verse: 24, text: "وَقَالَ نَبِيُّهُمْ إِنَّ اللَّهَ قَدْ بَعَثَ لَكُمْ طَالُوتَ مَلِكًا"},
+      {verse: 25, text: "قَالُوا كَيْفَ يَكُونُ لَهُ الْمُلْكُ عَلَيْنَا وَنَحْنُ أَحَقُّ بِالْمُلْكِ"},
+      {verse: 26, text: "قَالَ إِنَّ اللَّهَ اصْطَفَاهُ عَلَيْكُمْ وَزَادَهُ بَسْطَةً فِي الْعِلْمِ وَالْجِسْمِ"},
+      {verse: 27, text: "وَاللَّهُ يُؤْتِي مُلْكَهُ مَن يَشَاءُ"},
+      {verse: 28, text: "وَاللَّهُ وَاسِعٌ عَلِيمٌ"}
+    ]
+  };
+
+  // Helper to render ayat
+  function renderAyat(ayatArray) {
+    return ayatArray.map(ayat =>
+      `<div class="ayah"><span class="verse-number">${ayat.verse}</span>. ${ayat.text}</div>`
+    ).join('');
+  }
+
+  // Initialization and event
+  const juzSelect = document.getElementById('juz-select');
+  const quranText = document.getElementById('quran-text');
+
+  function loadJuz(juzNum) {
+    if(juzData[juzNum]){
+      quranText.innerHTML = renderAyat(juzData[juzNum]);
+      quranText.scrollTop = 0;
+    } else {
+      quranText.innerHTML = "Ayat untuk Juz ini belum tersedia.";
+    }
+  }
+
+  juzSelect.addEventListener('change', (e) => {
+    loadJuz(e.target.value);
+  });
+
+  // Load default Juz 1 on start
+  loadJuz(juzSelect.value);
+</script>
+</body>
+</html>
+
+```
